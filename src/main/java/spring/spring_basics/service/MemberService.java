@@ -10,25 +10,35 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-
+//    ??? new()를 통해 사실상 다른 테스트 코드와 매번 다른 DB(Memory)를 사용하는 거니 아래와 같이 작업(?)
+//    ??? DB(Memory)와 연동된 객체로 테스트 하기 위해(?)
+/*
     private final MemberRepository memberRepository = new MemoryMemberRepository();
+*/
+    //    객체 생성후 외부에서 메모리 할당(의존성 주입)
+    private final MemberRepository memberRepository;
 
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
     /**
      * 회원 가입
      */
     public Long join(Member member){
 //       이름이 같은 중복 회원은 가입을 하면 안 된다고 가정
-//        Optional<Member> result = memberRepository.findByName(member.getName());
-//        result.ifPresent(m -> { // ifPresent: Optional 객체에 값이 있으면 실행하는 함수
-//            throw new IllegalStateException("이미 존재하는 회원입니다.");
-//        });
-
+/*
+        Optional<Member> result = memberRepository.findByName(member.getName());
+        result.ifPresent(m -> { // ifPresent: Optional 객체에 값이 있으면 실행하는 함수
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        });
+*/
         // 아래와 같이 객체 생성하지 않고 바로 이어서 함수 작성할 수 있음
-//        memberRepository.findByName(member.getName())
-//                .ifPresent(m -> { // ifPresent: Optional 객체에 값이 있으면 실행하는 함수
-//                    throw new IllegalStateException("이미 존재하는 회원입니다.");
-//                });
-
+/*
+        memberRepository.findByName(member.getName())
+                .ifPresent(m -> { // ifPresent: Optional 객체에 값이 있으면 실행하는 함수
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                });
+*/
         // Extract Method(Ctrl+Alt+M)으로 리팩토링
         validateDuplicateMember(member); // 중복 회원 검증
         memberRepository.save(member);

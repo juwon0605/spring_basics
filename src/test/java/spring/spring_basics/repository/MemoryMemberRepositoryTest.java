@@ -28,10 +28,15 @@ class MemoryMemberRepositoryTest {
         repository.save(member);
 
         Member result = repository.findById(member.getId()).get(); // Optional타입에서 .get()으로 값을 꺼내기
-//        Assertions.assertEquals(result, member); // Junit에서 제공하는 두 값의 비교 함수 -> 실행 결과 확인
-//                                                 // Test에서 save()한 객체(member)와 DB(Memory)에서 save()한 객체(result)가 같으면 정상 동작 확인
-//        //overwriting 함수
-//        Assertions.assertThat(member).isEqualTo(result);    // DB(Memory)에서 save()한 객체(result)와 Test에서 save()한 객체(member)가 같으면 정상 동작 확인
+/*
+        Assertions.assertEquals(result, member); // Junit에서 제공하는 두 값의 비교 함수 -> 실행 결과 확인
+                                                 // Test에서 save()한 객체(member)와 DB(Memory)에서 save()한 객체(result)가 같으면 정상 동작 확인
+*/
+        //overwriting 함수
+/*
+        Assertions.assertThat(member).isEqualTo(result);    // DB(Memory)에서 save()한 객체(result)와 Test에서 save()한 객체(member)가 같으면 정상 동작 확인
+*/
+
 //      static import하면 아래와 같이 사용 가능
         assertThat(member).isEqualTo(result);    // DB(Memory)에서 save()한 객체(result)와 Test에서 save()한 객체(member)가 같으면 정상 동작 확인
     }
