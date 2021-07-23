@@ -2,10 +2,13 @@ package spring.spring_basics.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import spring.spring_basics.domain.Member;
 import spring.spring_basics.service.MemberService;
+
+import java.util.List;
 
 @Controller // @Controller 명시해야 스프링이 컨테이너에 스프링 빈으로 Controller 리소스 관리(컴포넌트 스캔과 자동 의존관계 설정)(DI: dependency injection)
 public class MemberController {
@@ -52,4 +55,10 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @GetMapping("/members")
+    public String list(Model model){
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "members/memberList";
+    }
 }
