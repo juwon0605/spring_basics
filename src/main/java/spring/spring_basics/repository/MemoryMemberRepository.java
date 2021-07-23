@@ -15,7 +15,7 @@ import spring.spring_basics.domain.Member;
 import java.lang.reflect.Array;
 import java.util.*;
 
-@Repository // @Repository를 명시해야 스프링이 컨테이너에 스프링 빈으로 Repository 리소스 관리(컴포넌트 스캔과 자동 의존관계 설정)
+//@Repository // @Repository를 명시해야 스프링이 컨테이너에 스프링 빈으로 Repository 리소스 관리(컴포넌트 스캔과 자동 의존관계 설정)(DI: dependency injection)
 public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>(); // 동시성 문제가 고려되어 있지 않음, 실무에서는 ConcurrentHashMap, AtomicLong 사용 고려

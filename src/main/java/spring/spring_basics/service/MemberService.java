@@ -11,7 +11,7 @@ import spring.spring_basics.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service // @Service 명시해야 스프링이 컨테이너에 스프링 빈으로 Service 리소스 관리(컴포넌트 스캔과 자동 의존관계 설정)
+//@Service // @Service 명시해야 스프링이 컨테이너에 스프링 빈으로 Service 리소스 관리(컴포넌트 스캔과 자동 의존관계 설정)(DI: dependency injection)
 public class MemberService {
 //    new()를 통해 사실상 다른 테스트 코드와 매번 다른 리소스 DB(Memory)를 사용하는 거니 아래와 같이 작업
 //    모든 컨트롤러 클래스에서 동일한 리소스 한 개만 사용하도록 아래와 같이 작업(싱글톤 등록)
@@ -20,8 +20,8 @@ public class MemberService {
 */
     //    객체 생성후 외부에서 메모리 할당(의존성 주입)
     private final MemberRepository memberRepository;
-    @Autowired  // 스프링이 컨테이너안 스프링 빈에 있는 리소스를 생성자로 연결(의존성 주입)
-    public MemberService(MemberRepository memberRepository){
+    @Autowired  // 스프링이 컨테이너안 스프링 빈에 있는 리소스를 생성자로 연결(의존성 주입)(DI: dependency injection)
+    public MemberService(MemberRepository memberRepository){ // 의존성 주입-1.생성자 주입 방법
         this.memberRepository = memberRepository;
     }
 
