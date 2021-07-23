@@ -13,7 +13,7 @@
             <tbody>
             <tr th:each="member : ${members}">
                 <td th:text="${member.id}"></td>   <!--자동으로 getId()로 private 변수 접근-->
-                <td th:text="${member.name}"></td> <!--자동으로 getId()로 private 변수 접근-->
+                <td th:text="${member.name}"></td> <!--자동으로 getName()로 private 변수 접근-->
             </tr>
             </tbody>
         </table>
