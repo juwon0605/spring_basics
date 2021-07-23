@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import spring.spring_basics.repository.JdbcMemberRepository;
+import spring.spring_basics.repository.JdbcTemplateMemberRepository;
 import spring.spring_basics.repository.MemberRepository;
 import spring.spring_basics.repository.MemoryMemberRepository;
 import spring.spring_basics.service.MemberService;
@@ -36,7 +37,8 @@ public class SpringConfig {
 //    스프링의 DI(Dependencies Injection)을 사용하면 기존 코드를 전혀 손대지 않고, 설정만으로 구현클래스를 변경할 수 있다.
     public MemberRepository memberRepository(){ // MemberRepository는 implement로 구현하여 아래와 같이 다형성 활용
 //        return new MemoryMemberRepository();  // implement 구현체를 MemoryMemberRepository로 구현
-        return new JdbcMemberRepository(dataSource); // implement 구현체를 JdbcMemberRepository로 구현
+//        return new JdbcMemberRepository(dataSource); // implement 구현체를 JdbcMemberRepository로 구현
+        return new JdbcTemplateMemberRepository(dataSource); // implement 구현체를 JdbcTemplateMemberRepository로 구현
     }
 
 }
