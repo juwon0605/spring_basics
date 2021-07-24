@@ -19,7 +19,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto id++
     private Long id;
 
-//    @Column(name = "username") // 컬럼과 객체 매핑 방법
+//    @Column(name = "column_name") // 컬럼과 객체 매핑 방법
     private String name;
 
     public Long getId() {

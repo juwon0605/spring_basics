@@ -19,35 +19,52 @@ import javax.xml.crypto.Data;
 public class SpringConfig {
 
     // Memory, Jdbc 의존성 주입
-/*
+    /*
     private DataSource dataSource;
     @Autowired
     public SpringConfig(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-*/
+    */
     // JPA 의존성 주입
+    /*
     private EntityManager em;
-
     @Autowired
     public SpringConfig(EntityManager em){
         this.em = em;
     }
+    */
 
+    // 스프링 데이터 JPA 의존성 주입
+    private final MemberRepository memberRepository;
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+    // Memory, Jdbc, JdbcTemplate, Jpa 의존성 주입
+    /*
     @Bean
     public MemberService memberService(){
         return new MemberService(memberRepository());
     }
-
+    */
+    // 스프링 데이터 JPA 의존성 주입
     @Bean
+    public MemberService memberService(){
+        return new MemberService(memberRepository);
+    }
+
 //    개방-폐쇄 원칙(OCP, Open-Closed Principle)
 //    기능 확장에는 열려있고, 수정.변경에는 닫혀있다.
 //    스프링의 DI(Dependencies Injection)을 사용하면 기존 코드를 전혀 손대지 않고, 설정만으로 구현클래스를 변경할 수 있다.
+    /*
+    @Bean
     public MemberRepository memberRepository(){ // MemberRepository는 implement로 구현하여 아래와 같이 다형성 활용
 //        return new MemoryMemberRepository();  // implement 구현체를 MemoryMemberRepository로 구현
 //        return new JdbcMemberRepository(dataSource); // implement 구현체를 JdbcMemberRepository로 구현
 //        return new JdbcTemplateMemberRepository(dataSource); // implement 구현체를 JdbcTemplateMemberRepository로 구현
-        return new JpaMemberRepository(em); // implement 구현체를 JdbcTemplateMemberRepository로 구현
+//        return new JpaMemberRepository(em); // implement 구현체를 JpaMemberRepository로 구현
     }
-
+    */
 }
