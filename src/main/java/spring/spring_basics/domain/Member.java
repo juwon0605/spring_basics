@@ -9,9 +9,17 @@ package spring.spring_basics.domain;
 // 리포지토리: 데이터베이스에 접근, 도메인 객체를 DB에 저장하고 관리
 // 도메인: 비즈니스 도메인 객체, 예) 회원, 주문, 쿠폰 등등 주로 데이터베이스에 저장하고 관리됨
 
+
+import javax.persistence.*;
+
+@Entity // JPA가 관리하는 객체 등록
 public class Member {
 
+    @Id // PK
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto id++
     private Long id;
+
+//    @Column(name = "username") // 컬럼과 객체 매핑 방법
     private String name;
 
     public Long getId() {

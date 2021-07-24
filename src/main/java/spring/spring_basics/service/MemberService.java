@@ -4,6 +4,7 @@ package spring.spring_basics.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import spring.spring_basics.domain.Member;
 import spring.spring_basics.repository.MemberRepository;
 import spring.spring_basics.repository.MemoryMemberRepository;
@@ -11,6 +12,7 @@ import spring.spring_basics.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional // JPA에서 DB data 저장 변경하기 위해 필요(JPA는 @Trnasactional안에서 실행되게 설계)
 //@Service // @Service 명시해야 스프링이 컨테이너에 스프링 빈으로 Service 리소스 관리(컴포넌트 스캔과 자동 의존관계 설정)(DI: dependency injection)
 public class MemberService {
 //    new()를 통해 사실상 다른 테스트 코드와 매번 다른 리소스 DB(Memory)를 사용하는 거니 아래와 같이 작업

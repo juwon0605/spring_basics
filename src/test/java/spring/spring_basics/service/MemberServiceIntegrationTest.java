@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 import spring.spring_basics.domain.Member;
 import spring.spring_basics.repository.MemberRepository;
@@ -46,6 +47,7 @@ public void beforeEach(){
 */
 
     @Test
+//    @Commit 이렇게하면 DB Test 결과를 저장할 수도 있음
 //    테스트 코드는 실제 빌드되는 코드에 반영되지 않아서 다국적으로 일하는게 아니면 한글로 작성할 수도 있음
     void 회원가입() {
         //1.given: 이러한 상황이 주어지면

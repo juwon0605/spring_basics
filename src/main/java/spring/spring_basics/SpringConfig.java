@@ -3,12 +3,10 @@ package spring.spring_basics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.spring_basics.repository.JdbcMemberRepository;
-import spring.spring_basics.repository.JdbcTemplateMemberRepository;
-import spring.spring_basics.repository.MemberRepository;
-import spring.spring_basics.repository.MemoryMemberRepository;
+import spring.spring_basics.repository.*;
 import spring.spring_basics.service.MemberService;
 
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import javax.xml.crypto.Data;
 
@@ -20,10 +18,20 @@ import javax.xml.crypto.Data;
 @Configuration
 public class SpringConfig {
 
+    // Memory, Jdbc 의존성 주입
+/*
     private DataSource dataSource;
     @Autowired
     public SpringConfig(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+*/
+    // JPA 의존성 주입
+    private EntityManager em;
+
+    @Autowired
+    public SpringConfig(EntityManager em){
+        this.em = em;
     }
 
     @Bean
@@ -38,7 +46,8 @@ public class SpringConfig {
     public MemberRepository memberRepository(){ // MemberRepository는 implement로 구현하여 아래와 같이 다형성 활용
 //        return new MemoryMemberRepository();  // implement 구현체를 MemoryMemberRepository로 구현
 //        return new JdbcMemberRepository(dataSource); // implement 구현체를 JdbcMemberRepository로 구현
-        return new JdbcTemplateMemberRepository(dataSource); // implement 구현체를 JdbcTemplateMemberRepository로 구현
+//        return new JdbcTemplateMemberRepository(dataSource); // implement 구현체를 JdbcTemplateMemberRepository로 구현
+        return new JpaMemberRepository(em); // implement 구현체를 JdbcTemplateMemberRepository로 구현
     }
 
 }
