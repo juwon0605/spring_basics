@@ -7,8 +7,7 @@
 
 ## **⦁ 구현 영상 (24초)**
 
-​ ![spring_basics 시연 영상](https://user-images.githubusercontent.com/58173061/126872276-31e378c5-5752-4d51-be39-c37502eb2864.gif)
-
+![spring_basics 시연 영상](https://user-images.githubusercontent.com/58173061/126873461-e4f25d35-dc34-4028-9350-440bcb8545e1.gif)
 
 ## **⦁ 기술 스택**
 
