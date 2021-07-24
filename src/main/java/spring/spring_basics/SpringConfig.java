@@ -3,6 +3,7 @@ package spring.spring_basics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import spring.spring_basics.aop.TImeTraceAop;
 import spring.spring_basics.repository.*;
 import spring.spring_basics.service.MemberService;
 
@@ -65,6 +66,14 @@ public class SpringConfig {
 //        return new JdbcMemberRepository(dataSource); // implement 구현체를 JdbcMemberRepository로 구현
 //        return new JdbcTemplateMemberRepository(dataSource); // implement 구현체를 JdbcTemplateMemberRepository로 구현
 //        return new JpaMemberRepository(em); // implement 구현체를 JpaMemberRepository로 구현
+    }
+    */
+
+    // AOP 사용 명시를 위해 직접 @Bean으로 등록(방법2) <-> @Component 등록(방법1)
+    /*
+    @Bean
+    public TImeTraceAop tImeTraceAop(){
+        return new TImeTraceAop();
     }
     */
 }

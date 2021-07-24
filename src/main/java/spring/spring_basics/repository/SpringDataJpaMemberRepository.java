@@ -5,7 +5,7 @@ import spring.spring_basics.domain.Member;
 
 import java.util.Optional;
 
-// 스프링 데이터 JPA가 interface를 자동으로 구현체를 만들어서 스프링 빈에 등록
+// 스프링 데이터 JPA가 interface를 자동으로 구현체를 만들어서 스프링 빈에 등록(프록시 기술)
 public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Long>, MemberRepository{
 
     @Override
